@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,74 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ThirdUIKid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sul-xp-TjY">
+                                <rect key="frame" x="16" y="85" width="343" height="448"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <mutableString key="text">Managing the Keyboard
+When the user taps in an editable text view, that text view becomes the first responder and automatically asks the system to display the associated keyboard. Because the appearance of the keyboard has the potential to obscure portions of your user interface, it is up to you to make sure that does not happen by repositioning any views that might be obscured. Some system views, like table views, help you by scrolling the first responder into view automatically. If the first responder is at the bottom of the scrolling region, however, you may still need to resize or reposition the scroll view itself to ensure the first responder is visible.
+
+It is your application’s responsibility to dismiss the keyboard at the time of your choosing. You might dismiss the keyboard in response to a specific user action, such as the user tapping a particular button in your user interface. To dismiss the keyboard, send the resignFirstResponder() message to the text view that is currently the first responder. Doing so causes the text view object to end the current editing session (with the delegate object’s consent) and hide the keyboard.
+
+The appearance of the keyboard itself can be customized using the properties provided by the UITextInputTraits protocol. Text view objects implement this protocol and support the properties it defines. You can use these properties to specify the type of keyboard (ASCII, Numbers, URL, Email, and others) to display. You can also configure the basic text entry behavior of the keyboard, such as whether it supports automatic capitalization and correction of the text.</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6W-6g-xbm">
+                                <rect key="frame" x="16" y="41" width="11" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Qca-Ut-nf5">
+                                <rect key="frame" x="265" y="35" width="94" height="32"/>
+                                <connections>
+                                    <action selector="sizeFont:" destination="BYZ-38-t0r" eventType="valueChanged" id="cQT-zf-fw2"/>
+                                </connections>
+                            </stepper>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="xXD-b4-BJJ">
+                                <rect key="frame" x="177.5" y="299" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HZL-PU-Be3">
+                                <rect key="frame" x="16" y="85" width="343" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.51053094433964841" green="0.7693973183631897" blue="0.3740910495740567" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Sul-xp-TjY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="02p-7K-glQ"/>
+                            <constraint firstItem="HZL-PU-Be3" firstAttribute="width" secondItem="Sul-xp-TjY" secondAttribute="width" id="3Sf-Nf-75v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="e6W-6g-xbm" secondAttribute="trailing" constant="348" id="5hp-3i-SMV"/>
+                            <constraint firstItem="HZL-PU-Be3" firstAttribute="top" secondItem="Sul-xp-TjY" secondAttribute="top" id="CMv-C0-6pz"/>
+                            <constraint firstItem="e6W-6g-xbm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Ex8-DQ-OdD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Sul-xp-TjY" secondAttribute="bottom" constant="134" id="GyS-X9-AwG"/>
+                            <constraint firstItem="e6W-6g-xbm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="41" id="N9O-Jc-9oa"/>
+                            <constraint firstItem="HZL-PU-Be3" firstAttribute="centerX" secondItem="Sul-xp-TjY" secondAttribute="centerX" id="NA9-ki-Sa9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qca-Ut-nf5" secondAttribute="trailing" constant="16" id="QKV-7r-F2i"/>
+                            <constraint firstItem="Sul-xp-TjY" firstAttribute="top" secondItem="e6W-6g-xbm" secondAttribute="bottom" constant="23" id="Zdq-EK-fVK"/>
+                            <constraint firstItem="xXD-b4-BJJ" firstAttribute="centerX" secondItem="Sul-xp-TjY" secondAttribute="centerX" id="h8f-vR-Wu3"/>
+                            <constraint firstItem="Qca-Ut-nf5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="lrj-W4-SlY"/>
+                            <constraint firstItem="xXD-b4-BJJ" firstAttribute="centerY" secondItem="Sul-xp-TjY" secondAttribute="centerY" id="mTx-oQ-nmF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sul-xp-TjY" secondAttribute="trailing" constant="16" id="oZc-UP-FL5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="xXD-b4-BJJ" id="p88-we-zXA"/>
+                        <outlet property="countLabel" destination="e6W-6g-xbm" id="XLe-er-hWF"/>
+                        <outlet property="progressView" destination="HZL-PU-Be3" id="Swv-xV-ioB"/>
+                        <outlet property="stepper" destination="Qca-Ut-nf5" id="wVf-1i-dzv"/>
+                        <outlet property="textView" destination="Sul-xp-TjY" id="FKT-lI-7i3"/>
+                        <outlet property="textViewBottomConstraint" destination="GyS-X9-AwG" id="SaT-D1-YuE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="132" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>
